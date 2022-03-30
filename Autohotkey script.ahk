@@ -1,4 +1,4 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -19,8 +19,24 @@ Run, https://www.felleskatalogen.no/medisin/internsok?sokord=%clipboard%
 Return
 }
 
+::-bt::
+Gui, Add, Text, x30 y05 , Blodtrykk og puls
+Gui, Add, Text, x12 y30 w60 h30, BT
+Gui, Add, Text, x12 y60 w60 h30, Puls 
+...
 
-::-bt::Blodtrykk: Puls:
+Gui, Add, Edit, x75 y30 w60 h20 vBT, 
+Gui, Add, Edit, x75 y60 w60 h20 vPuls,
+
+...
+Gui, Add, Button, x25 y100 w40 h30 , OK
+Gui, Show, w170, Blodtrykk og puls
+Return
+ButtonOK:
+Gui, Submit
+Gui, Destroy
+
+Send BT: %BT%{Enter}Puls: %puls%{Enter}
 
 ::centor::Centor-kriteriene, tre av fire til stede (feber over 38,5 gr C, hovne lymfeknuter, puss på tonsillene og fravær av hoste).
 
